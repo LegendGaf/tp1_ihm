@@ -53,15 +53,22 @@ int main(void) {
         sleep(1);
         fclose(led);
     }
+    
+    char x[100];
+    
     while (1) {
         if (curChar) {
             // remplacez le printf par le clignottement de la LED 0 afin de faire
             // le code morse du caractere ASCII correspondant.
-            char x[100];
-            scanf("%s", &x);
-            printf("--> %02X\n", curChar);
+            // char x[100];  @H faire sortir la declaration de la boucle infinie.
+            scanf("%s", &x); // je pense qu'on doit faire sortir cette ligne du test de curChar !!
+            
+            printf("--> %02X\n", curChar); // ?? what does curChar means
+            
             curChar = 0;
         }
+        //scanf("%s", &x);
+        
     }
     return EXIT_SUCCESS;
 }
