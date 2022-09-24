@@ -61,13 +61,13 @@ int main(void) {
             // remplacez le printf par le clignottement de la LED 0 afin de faire
             // le code morse du caractere ASCII correspondant.
             // char x[100];  @H faire sortir la declaration de la boucle infinie.
-            scanf("%s", &x); // je pense qu'on doit faire sortir cette ligne du test de curChar !!
+            //scanf("%s", &x); je pense qu'on doit faire sortir cette ligne du test de curChar !!
             
             printf("--> %02X\n", curChar); // ?? what does curChar means
             
             curChar = 0;
         }
-        //scanf("%s", &x);
+        scanf("%s", &x);
         
     }
     return EXIT_SUCCESS;
