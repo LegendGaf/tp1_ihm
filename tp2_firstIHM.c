@@ -1,5 +1,7 @@
 #include <cdk/cdk.h>
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 int main() {
     CDKSCREEN    *cdkscreen;
     WINDOW       *cursesWin;
@@ -16,7 +18,7 @@ int main() {
     initCDKColor();
 
     /* texte de la question. */
-    message[0]   = "<C></U>Pour allumer les Leds  clique sur \"Allumer\"";
+    message[0]   = "<C>Pour allumer les Leds  clique sur \"Allumer\"";
     message[1]   = "<C>Pour eteindre les Leds clique sur \"Eteindre\"";
     message[2]   = "<C>Pour clignoter les Leds clique sur \"Clignoter\"";
 
