@@ -4,7 +4,7 @@ int main() {
     CDKSCREEN    *cdkscreen;
     WINDOW       *cursesWin;
     CDKDIALOG    *question;
-    char *buttons[] = {"</24>Oui", "</24>Non", "</24>Grumpf"};
+    char *buttons[] = {"</24>Allumer", "</24>Eteindre", "</24>Clignoter"};
     char *message[10], *mesg[10], temp[100];
     int selection;
 
@@ -16,18 +16,16 @@ int main() {
     initCDKColor();
 
     /* texte de la question. */
-    message[0]   = "<C></U>Une fenetre de dialogue CDKDIALOG";
-    message[1]   = " ";
-    message[2]   = "<C>On pose une question a";
-    message[3]   = "<C>l'utilisateur";
-    message[4]   = "<C>et il repond en choix ferme<!R>";
-    message[5]   = "<C>avec un des boutons";
+    message[0]   = "<C></U>Pour allumer les Leds  clique sur \"Allumer\"";
+    message[1]   = "<C>Pour eteindre les Leds clique sur \"Eteindre\"";
+    message[2]   = "<C>Pour clignoter les Leds clique sur \"Clignoter\"";
+
 
     question = newCDKDialog (cdkscreen,
                              5,             /* coordonnee sur x : colonne de debut*/
                              5,             /* coordonnee sur y : ligne de debut en partant du haut */
                              message,       /* le tableau de caractere contenant la question */
-                             6,             /* le nombre de lignes de la question */
+                             3,             /* le nombre de lignes de la question */
                              buttons,       /* le tableau de caractères contenant les boutons */
                              3,             /* le nombre de boutons */
                              A_UNDERLINE,   /* Attribut ncurses du bouton selectionne */
