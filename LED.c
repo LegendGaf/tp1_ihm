@@ -5,6 +5,7 @@
 #include <signal.h>
 
 void action_button(int x) {
+    int tmp=10;
     if (x == 0) {
         // Initialisation des LEDs utilisant le script
         system("/root/01-cmdLEDs/LEDs_off.sh");
@@ -65,7 +66,7 @@ void action_button(int x) {
                 printf("Error open file led!");
                 exit(EXIT_SUCCESS);
             }
-            while (sleep(6) == 0) {
+            while (tmp!=0) {
                 fputs("1", led);
                 fflush(led);
                 sleep(1);
@@ -73,6 +74,8 @@ void action_button(int x) {
                 fflush(led);
                 sleep(1);
                 fclose(led);
+                tmp--;
+
             }
         }
     }
