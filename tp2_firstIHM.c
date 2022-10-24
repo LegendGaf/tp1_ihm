@@ -18,7 +18,9 @@ char ** heure(){
     now =time(NULL);
     tm_now =*localtime(&now);
     textDate [0]="Afichage de l'heure ";
-    strftime(textDate[1],sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
+    char tmp[100];
+    strftime(tmp,sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
+    textDate[1]=tmp;
     return textDate;
 }
 void action_button(int x, int y) {
