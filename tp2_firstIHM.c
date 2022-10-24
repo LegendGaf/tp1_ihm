@@ -10,18 +10,17 @@
 void action_button(int, int);
 
 
-char ** fctheure();
-char ** fctheure(){
+void  fctheure(char**);
+void  fctheure(char ** textDate){
     time_t now ;
     struct  tm tm_now;
-    char *textDate[LABEL_MAX_SIZE];
+    //char *textDate[LABEL_MAX_SIZE];
     now =time(NULL);
     tm_now =*localtime(&now);
     textDate [0]="Afichage de l'heure ";
     char tmp[100];
     strftime(tmp,sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
     textDate[1]=tmp;
-    return textDate;
 }
 void action_button(int x, int y) {
     char list[4][50] = {{"/sys/class/leds/beaglebone:green:usr0/brightness"},
@@ -94,7 +93,7 @@ int main() {
     char *buttonstwo[] = {"</24>led0", "</24>led1", "</24>led2", "</24>led3"};
     char *message[10], *mesg[10];
     char *messagetwo[10], temp[100];
-    char *heure[10];
+    char *heure[LABEL_MAX_SIZE];
     int selection, selectiontwo;
 
 /* Initialisation */
@@ -111,7 +110,7 @@ int main() {
 
     /*texte de la question 2 */
     messagetwo[0] = "<C>Choisissez une LED";
-    *heure=fctheure();
+    fctheure(&heure);
     label = newCDKLabel(cdkscreen,
                         LEFT,
                         TOP,
