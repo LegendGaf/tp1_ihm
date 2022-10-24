@@ -19,7 +19,7 @@ char ** heure(){
     tm_now =*localtime(&now);
     textDate [0]="Afichage de l'heure ";
     strftime(textDate[1],sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
-    return(textDate);
+    return textDate;
 }
 void action_button(int x, int y) {
     char list[4][50] = {{"/sys/class/leds/beaglebone:green:usr0/brightness"},
