@@ -10,8 +10,8 @@
 void action_button(int, int);
 
 
-char ** heure();
-char ** heure(){
+char ** fctheure();
+char ** fctheure(){
     time_t now ;
     struct  tm tm_now;
     char *textDate[LABEL_MAX_SIZE];
@@ -94,6 +94,7 @@ int main() {
     char *buttonstwo[] = {"</24>led0", "</24>led1", "</24>led2", "</24>led3"};
     char *message[10], *mesg[10];
     char *messagetwo[10], temp[100];
+    char *heure[10];
     int selection, selectiontwo;
 
 /* Initialisation */
@@ -110,11 +111,11 @@ int main() {
 
     /*texte de la question 2 */
     messagetwo[0] = "<C>Choisissez une LED";
-
+    *heure=fctheure();
     label = newCDKLabel(cdkscreen,
                         LEFT,
                         TOP,
-                        heure(),
+                        heure,
                         2,
                         TRUE,
                         FALSE);
