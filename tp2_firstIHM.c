@@ -4,9 +4,22 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
+#include <time.h>
+#define LABEL_MAX_SIZE 25
 
 void action_button(int, int);
 
+
+char * heure();
+char * heure(){
+    time_t now ;
+    struct  tm tm_now;
+    char textDate[LABEL_MAX_SIZE];
+    now =time(NULL);
+    tm_now =*localtime(&now);
+    strftime(textDate,sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
+    return(textDate);
+}
 void action_button(int x, int y) {
     char list[4][50] = {{"/sys/class/leds/beaglebone:green:usr0/brightness"},
                         {"/sys/class/leds/beaglebone:green:usr1/brightness"},
@@ -73,6 +86,7 @@ int main() {
     WINDOW *cursesWin;
     CDKDIALOG *question;
     CDKDIALOG *questiontwo;
+    CDKLABEL *label;
     char *buttons[] = {"</24>ON", "</24>OFF", "</24>Blink"};
     char *buttonstwo[] = {"</24>led0", "</24>led1", "</24>led2", "</24>led3"};
     char *message[10], *mesg[10];
@@ -93,6 +107,15 @@ int main() {
 
     /*texte de la question 2 */
     messagetwo[0] = "<C>Choisissez une LED";
+
+    label =newCDKLabel(cdkscreen,
+                 1,
+                 1,
+                 heure(),
+                 1,
+                 TRUE,FALSE);
+
+    activeCDKLabel(label, 0);
 
     question = newCDKDialog(cdkscreen,
                             5,             /* coordonnee sur x : colonne de debut*/
@@ -138,7 +161,8 @@ int main() {
         mesg[1] = "<C>Elle regroupe un label centre et une fonction";
         mesg[2] = "<C>d'attente d'appui sur une touche quelconque";
         mesg[3] = "";
-        sprintf(temp, "<C>Vous avez choisi le bouton #%d,%s et la led %s", selection, buttons[selection], buttonstwo[selectiontwo]);
+        sprintf(temp, "<C>Vous avez choisi le bouton #%d,%s et la led %s", selection, buttons[selection],
+                buttonstwo[selectiontwo]);
         mesg[4] = copyChar(temp); /* fonction de CDK ~ strdup */
         action_button(selection, selectiontwo);
         mesg[5] = "<C>Appuyez sur une touche";
