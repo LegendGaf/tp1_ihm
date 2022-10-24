@@ -10,14 +10,15 @@
 void action_button(int, int);
 
 
-char * heure();
-char * heure(){
+char ** heure();
+char ** heure(){
     time_t now ;
     struct  tm tm_now;
-    char textDate[LABEL_MAX_SIZE];
+    char *textDate[LABEL_MAX_SIZE];
     now =time(NULL);
     tm_now =*localtime(&now);
-    strftime(textDate,sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
+    textDate [0]="Afichage de l'heure ";
+    strftime(textDate[1],sizeof " JJ/MM/AAAA HH:MM:SS"," %d/%m/%Y %H:%M:%S",&tm_now);
     return(textDate);
 }
 void action_button(int x, int y) {
@@ -112,7 +113,7 @@ int main() {
                         LEFT,
                         TOP,
                         heure(),
-                        1,
+                        2,
                         TRUE,
                         FALSE);
 
