@@ -109,8 +109,8 @@ int main() {
     messagetwo[0] = "<C>Choisissez une LED";
 
     label = newCDKLabel(cdkscreen,
-                        TOP,
                         LEFT,
+                        TOP,
                         heure(),
                         1,
                         TRUE,
@@ -119,7 +119,7 @@ int main() {
     activateCDKLabel(label, 0);
 
     question = newCDKDialog(cdkscreen,
-                            ,             /* coordonnee sur x : colonne de debut*/
+                            5,             /* coordonnee sur x : colonne de debut*/
                             5,             /* coordonnee sur y : ligne de debut en partant du haut */
                             message,       /* le tableau de caractere contenant la question */
                             3,             /* le nombre de lignes de la question */
